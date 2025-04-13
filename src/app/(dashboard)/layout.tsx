@@ -1,3 +1,4 @@
+'use client'
 import { Header } from "@/components/header";
 import { SidebarProvider } from "@/components/sidebar-provider";
 import { Sidebar } from "@/components/ui/sidebar";

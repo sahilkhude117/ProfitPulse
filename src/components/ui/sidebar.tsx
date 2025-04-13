@@ -152,6 +152,6 @@ const footerItems = [
       { name: "Permissions", href: "/settings/permissions", description: "Access control" },
     ],
   },
-  { name: "Help", href: "/help", icon: HelpCircle, description: "Get support" },
-  { name: "Logout", href: "/logout", icon: LogOut, description: "Exit the app" },
+  { name: "Help", href: "/dashboard", icon: HelpCircle, description: "Get support" },
+  { name: "Logout", href: "/", icon: LogOut, description: "Exit the app" },
 ]

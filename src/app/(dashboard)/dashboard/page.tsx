@@ -30,40 +30,52 @@ export default function DashboardPage() {
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">24</div>
-                <p className="text-xs text-muted-foreground">+12% from yesterday</p>
+                <div className="flex flex-row mt-2">
+                  <p className="text-xs text-green-500">+12%</p>
+                  <p className="ml-2 text-xs text-muted-foreground">from yesterday </p>
+                </div>
               </CardContent>
             </Card>
 
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">Total Users</CardTitle>
-                <UsersIcon className="h-4 w-4 text-muted-foreground" />
+                <UsersIcon className="h-4 w-4 " />
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">1,284</div>
-                <p className="text-xs text-muted-foreground">+2.5% from last week</p>
+                <div className="flex flex-row mt-2">
+                  <p className="text-xs text-green-500">+2.5% </p>      
+                  <p className="ml-2 text-xs text-muted-foreground">from yesterday </p>
+                </div>
               </CardContent>
             </Card>
 
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">Transactions Today</CardTitle>
-                <WalletIcon className="h-4 w-4 text-muted-foreground" />
+                <WalletIcon className="h-4 w-4 " />
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold">R 12,543</div>
-                <p className="text-xs text-muted-foreground">+18% from yesterday</p>
+                <div className="text-2xl font-bold">₹ 12,543</div>
+                <div className="flex flex-row mt-2">
+                  <p className="text-xs  text-green-500">+18% </p>
+                  <p className="ml-2 text-xs text-muted-foreground">from yesterday </p>
+                </div>
               </CardContent>
             </Card>
 
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">Non-Users</CardTitle>
-                <UserXIcon className="h-4 w-4 text-muted-foreground" />
+                <UserXIcon className="h-4 w-4 " />
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">342</div>
-                <p className="text-xs text-muted-foreground">-4% from yesterday</p>
+                <div className="flex flex-row mt-2">
+                  <p className="text-xs  text-red-500">-4%</p>
+                  <p className="ml-2 text-xs text-muted-foreground">from yesterday </p>
+                </div>
               </CardContent>
             </Card>
           </div>
@@ -74,44 +86,56 @@ export default function DashboardPage() {
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">New Users This Week</CardTitle>
-                <UserPlusIcon className="h-4 w-4 text-muted-foreground" />
+                <UserPlusIcon className="h-4 w-4 " />
               </CardHeader>
-              <CardContent>
+              <CardContent> 
                 <div className="text-2xl font-bold">156</div>
-                <p className="text-xs text-muted-foreground">+8% from last week</p>
+                <div className="flex flex-row mt-2">
+                  <p className="text-xs  text-green-500">+8% </p>
+                  <p className="ml-2 text-xs text-muted-foreground">from last week </p>
+                </div>
               </CardContent>
             </Card>
 
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">Total Users</CardTitle>
-                <UsersIcon className="h-4 w-4 text-muted-foreground" />
+                <UsersIcon className="h-4 w-4 " />
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">1,284</div>
-                <p className="text-xs text-muted-foreground">+2.5% from last week</p>
+                <div className="flex flex-row mt-2">
+                  <p className="text-xs  text-green-500">+2.5% </p> 
+                  <p className="ml-2 text-xs text-muted-foreground">from last week </p>
+                </div>
               </CardContent>
             </Card>
 
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">Transactions This Week</CardTitle>
-                <WalletIcon className="h-4 w-4 text-muted-foreground" />
+                <WalletIcon className="h-4 w-4 " />
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold">R 87,651</div>
-                <p className="text-xs text-muted-foreground">+12% from last week</p>
+                <div className="text-2xl font-bold">₹ 87,651</div>
+                <div className="flex flex-row mt-2">
+                  <p className="text-xs  text-green-500">+12% </p>
+                  <p className="ml-2 text-xs text-muted-foreground">from last week </p>
+                </div>
               </CardContent>
             </Card>
 
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">Non-Users</CardTitle>
-                <UserXIcon className="h-4 w-4 text-muted-foreground" />
+                <UserXIcon className="h-4 w-4 " />
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">342</div>
-                <p className="text-xs text-muted-foreground">-4% from last week</p>
+                <div className="flex flex-row mt-2">
+                  <p className="text-xs  text-red-500">-4% </p>
+                  <p className="ml-2 text-xs text-muted-foreground">from last week </p>
+                </div>
               </CardContent>
             </Card>
           </div>
@@ -122,22 +146,28 @@ export default function DashboardPage() {
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">New Users This Month</CardTitle>
-                <UserPlusIcon className="h-4 w-4 text-muted-foreground" />
+                <UserPlusIcon className="h-4 w-4 " />
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">642</div>
-                <p className="text-xs text-muted-foreground">+15% from last month</p>
+                <div className="flex flex-row mt-2">
+                  <p className="text-xs  text-green-500">+15% </p>
+                  <p className="ml-2 text-xs text-muted-foreground">from last month </p>
+                </div>
               </CardContent>
             </Card>
 
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">Total Users</CardTitle>
-                <UsersIcon className="h-4 w-4 text-muted-foreground" />
+                <UsersIcon className="h-4 w-4 " />
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">1,284</div>
-                <p className="text-xs text-muted-foreground">+2.5% from last month</p>
+                <div className="flex flex-row mt-2">
+                  <p className="text-xs  text-green-500">+2.5% </p>
+                  <p className="ml-2 text-xs text-muted-foreground">from last month </p>
+                </div>
               </CardContent>
             </Card>
 
@@ -147,8 +177,11 @@ export default function DashboardPage() {
                 <WalletIcon className="h-4 w-4 text-muted-foreground" />
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold">R 324,845</div>
-                <p className="text-xs text-muted-foreground">+22% from last month</p>
+                <div className="text-2xl font-bold">₹ 324,845</div>
+                <div className="flex flex-row mt-2">
+                  <p className="text-xs  text-green-500">+22% </p>
+                  <p className="ml-2 text-xs text-muted-foreground">from last month </p>
+                </div>
               </CardContent>
             </Card>
 
@@ -159,7 +192,10 @@ export default function DashboardPage() {
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">342</div>
-                <p className="text-xs text-muted-foreground">-4% from last month</p>
+                <div className="flex flex-row mt-2">
+                  <p className="text-xs  text-red-500">-4% </p>
+                  <p className="ml-2 text-xs text-muted-foreground">from last month </p>
+                </div>
               </CardContent>
             </Card>
           </div>

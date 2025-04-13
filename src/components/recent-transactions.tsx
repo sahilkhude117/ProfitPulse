@@ -19,7 +19,7 @@ export function RecentTransactions() {
             <p className="text-sm text-muted-foreground">{transaction.date}</p>
           </div>
           <div className={`ml-auto font-medium ${transaction.type === "credit" ? "text-green-500" : "text-red-500"}`}>
-            {transaction.type === "credit" ? "+" : "-"}₹ {transaction.amount.toFixed(2)}
+            {transaction.type === "credit" ? "+" : "-"}$ {transaction.amount.toFixed(2)}
           </div>
         </div>
       ))}

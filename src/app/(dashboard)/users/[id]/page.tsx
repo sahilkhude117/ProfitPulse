@@ -8,9 +8,9 @@ import Link from "next/link"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { UserTransactions } from "@/components/user-transactions"
 
-export default function UserProfilePage({ params }: { params: { id: string } }) {
+export default async function UserProfilePage({ params }: { params: Promise<{ id: string }> }) {
   // In a real app, you would fetch the user data based on the ID
-  const user = users.find((u) => u.id === params.id) || users[0]
+  const user = users.find(async (u) => u.id === (await params).id) || users[0]
 
   return (
     <div className="flex flex-col gap-4">
@@ -167,7 +167,7 @@ export default function UserProfilePage({ params }: { params: { id: string } }) 
               <CardDescription>View all transactions for this user</CardDescription>
             </CardHeader>
             <CardContent>
-              <UserTransactions userId={params.id} />
+              <UserTransactions userId={(await params).id} />
             </CardContent>
           </Card>
         </TabsContent>

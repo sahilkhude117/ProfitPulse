@@ -145,10 +145,18 @@ export function DashboardChart() {
     setIsFiltersOpen(!isFiltersOpen)
   }
 
-  const formatCurrency = (value:any) => {
-    return new Intl.NumberFormat('en-ZA', {
+  // const formatCurrency = (value:any) => {
+  //   return new Intl.NumberFormat('en-ZA', {
+  //     style: 'currency',
+  //     currency: 'ZAR',
+  //     minimumFractionDigits: 0,
+  //     maximumFractionDigits: 0
+  //   }).format(value)
+  // }
+  const formatCurrency = (value: any) => {
+    return new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency: 'ZAR',
+      currency: 'USD',
       minimumFractionDigits: 0,
       maximumFractionDigits: 0
     }).format(value)

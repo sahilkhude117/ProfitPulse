@@ -27,8 +27,8 @@ export function Sidebar() {
         )}
       >
         <div className="flex h-14 items-center border-b px-4">
-          <span className="text-lg font-semibold">Sambo Admin</span>
-          <Button variant="ghost" size="icon" className="ml-auto lg:hidden" onClick={toggle}>
+          <span className="text-lg font-semibold">Profit Pulse</span>
+          <Button variant="ghost" size="icon" className="ml-auto bg-black lg:hidden" onClick={toggle}>
             <Menu className="h-5 w-5" />
           </Button>
         </div>

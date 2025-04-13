@@ -30,37 +30,37 @@ export function RecentTransactions() {
 const transactions = [
   {
     id: "1",
-    name: "Thabo Mbeki",
+    name: "Aishwarya Sharma",
     amount: 250.0,
     date: "2023-11-14",
     type: "credit",
   },
   {
     id: "2",
-    name: "Nomzamo Mbatha",
+    name: "Rohan Kapoor",
     amount: 1000.0,
     date: "2023-11-13",
     type: "debit",
   },
   {
     id: "3",
-    name: "Siya Kolisi",
+    name: "Priya Patel",
     amount: 500.0,
     date: "2023-11-12",
     type: "credit",
   },
   {
     id: "4",
-    name: "Trevor Noah",
+    name: "Vikram Menon",
     amount: 750.0,
     date: "2023-11-11",
     type: "debit",
   },
   {
     id: "5",
-    name: "Patrice Motsepe",
+    name: "Sneha Reddy",
     amount: 2500.0,
     date: "2023-11-10",
     type: "credit",
   },
-]
+];

@@ -358,20 +358,6 @@ export function DashboardChart() {
               ))}
             </select>
           </div>
-
-          {/* Action Buttons */}
-          <button 
-            className="p-2 rounded-md bg-muted text-muted-foreground hover:text-foreground"
-            title="Download"
-          >
-            <Download className="h-4 w-4" />
-          </button>
-          <button 
-            className="p-2 rounded-md bg-muted text-muted-foreground hover:text-foreground"
-            title="More options"
-          >
-            <MoreHorizontal className="h-4 w-4" />
-          </button>
         </div>
       </div>
 

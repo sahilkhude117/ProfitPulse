@@ -135,7 +135,7 @@ export function Sidebar() {
 
 const navItems = [
   { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
-  { name: "Users", href: "/users", icon: Users, badge: "8" },
+  { name: "Users", href: "/users", icon: Users, badge: "7" },
   { name: "Transactions", href: "/transactions", icon: Wallet },
   { name: "Analytics", href: "/analytics", icon: BarChart3 },
 ]

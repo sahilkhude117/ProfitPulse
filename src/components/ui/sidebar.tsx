@@ -4,12 +4,17 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useSidebar } from "../sidebar-provider"
 import { cn } from "@/lib/utils"
-import { LayoutDashboard, Users, Wallet, BarChart3, Settings, HelpCircle, LogOut, Menu } from "lucide-react"
+import { LayoutDashboard, Users, Wallet, BarChart3, Settings, HelpCircle, LogOut, Menu, ChevronRight, ChevronDown, ChartLine } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { useState } from "react"
 
 export function Sidebar() {
   const pathname = usePathname()
   const { isOpen, toggle } = useSidebar()
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false)
+  const settingsItem = footerItems[0];
+  // Get the other items (Help and Logout)
+  const otherItems = footerItems.slice(1);
 
   return (
     <>
@@ -27,7 +32,8 @@ export function Sidebar() {
         )}
       >
         <div className="flex h-14 items-center border-b px-4">
-          <span className="text-lg font-semibold">Profit Pulse</span>
+            <ChartLine className="h-5 w-5" />
+          <span className="ml-2 text-lg font-semibold">Profit Pulse</span>
           <Button variant="ghost" size="icon" className="ml-auto bg-black lg:hidden" onClick={toggle}>
             <Menu className="h-5 w-5" />
           </Button>
@@ -57,54 +63,67 @@ export function Sidebar() {
           </div>
           <div className="border-t p-2">
             <nav className="grid gap-1">
-              {footerItems.map((item, index) => (
-                <div key={index}>
-                  {item.subItems ? (
-                    <div className="space-y-1">
+              <div>
+              <button
+                  onClick={() => setIsSettingsOpen(!isSettingsOpen)}
+                  className={cn(
+                    "flex w-full items-center justify-between gap-3 rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground",
+                    pathname === settingsItem.href || pathname?.startsWith("/settings/")
+                      ? "bg-accent text-accent-foreground"
+                      : "text-muted-foreground"
+                  )}
+                >
+                   <div className="flex items-center gap-3">
+                    <settingsItem.icon className="h-5 w-5" />
+                    <span>{settingsItem.name}</span>
+                  </div>
+                  {isSettingsOpen ? (
+                      <ChevronDown className="h-4 w-4" />
+                    ) : (
+                      <ChevronRight className="h-4 w-4" />
+                    )}
+                </button>
+
+                {isSettingsOpen && settingsItem.subItems && (
+                  <div className="pl-4 space-y-1 mt-1">
+                    {settingsItem.subItems.map((subItem, subIndex) => (
                       <Link
-                        href={item.href}
+                        key={subIndex}
+                        href={subItem.href}
                         className={cn(
-                          "flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground",
-                          pathname === item.href ? "bg-accent text-accent-foreground" : "text-muted-foreground",
+                          "flex items-center gap-3 rounded-md px-3 py-1.5 text-sm hover:bg-accent hover:text-accent-foreground",
+                          pathname === subItem.href
+                            ? "bg-accent text-accent-foreground"
+                            : "text-muted-foreground"
                         )}
                       >
-                        <item.icon className="h-5 w-5" />
-                        <span>{item.name}</span>
+                        <span>{subItem.name}</span>
+                        {subItem.description && (
+                          <span className="ml-auto text-xs text-muted-foreground">
+                            {subItem.description}
+                          </span>
+                        )}
                       </Link>
-                      <div className="pl-4 space-y-1">
-                        {item.subItems.map((subItem, subIndex) => (
-                          <Link
-                            key={subIndex}
-                            href={subItem.href}
-                            className={cn(
-                              "flex items-center gap-3 rounded-md px-3 py-1.5 text-sm hover:bg-accent hover:text-accent-foreground",
-                              pathname === subItem.href ? "bg-accent text-accent-foreground" : "text-muted-foreground",
-                            )}
-                          >
-                            <span>{subItem.name}</span>
-                            {subItem.description && (
-                              <span className="ml-auto text-xs text-muted-foreground">{subItem.description}</span>
-                            )}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  ) : (
-                    <Link
-                      href={item.href}
-                      className={cn(
-                        "flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground",
-                        pathname === item.href ? "bg-accent text-accent-foreground" : "text-muted-foreground",
-                      )}
-                    >
-                      <item.icon className="h-5 w-5" />
-                      <span>{item.name}</span>
-                      {item.description && (
-                        <span className="ml-auto text-xs text-muted-foreground">{item.description}</span>
-                      )}
-                    </Link>
+                    ))}
+                  </div>
+                )}
+
+              </div>
+              {otherItems.map((item, index) => (
+                <Link
+                  key={index}
+                  href={item.href}
+                  className={cn(
+                    "flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground",
+                    pathname === item.href ? "bg-accent text-accent-foreground" : "text-muted-foreground"
                   )}
-                </div>
+                >
+                  <item.icon className="h-5 w-5" />
+                  <span>{item.name}</span>
+                  {item.description && (
+                    <span className="ml-auto text-xs text-muted-foreground">{item.description}</span>
+                  )}
+                </Link>
               ))}
             </nav>
           </div>

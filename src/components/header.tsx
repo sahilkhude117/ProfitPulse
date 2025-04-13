@@ -1,9 +1,10 @@
+'use client'
 import { Bell, Menu, Search, User } from "lucide-react";
 import { Button } from "./ui/button";
 import { useSidebar } from "./sidebar-provider";
 import { Input } from "./ui/input";
 import { DropdownMenu, DropdownMenuItem, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "./ui/dropdown-menu";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Badge } from "./ui/badge";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { Card, CardTitle, CardHeader, CardDescription, CardContent, CardFooter } from "./ui/card";
@@ -79,7 +80,9 @@ const notifications = {
 
 export function Header() {
     const { toggle } = useSidebar();
+    const [isScrolled, setIsScrolled] = useState(false)
     const [open, setOpen] = useState(false)
+    const [mounted, setMounted] = useState(false)
     const [notificationData, setNotificationData] = useState(notifications)
 
     const router = useRouter();
@@ -127,8 +130,22 @@ export function Header() {
         }
     }
 
+    useEffect(() => {
+      setMounted(true)
+      const handleScroll = () => {
+        if (window.scrollY > 10) {
+          setIsScrolled(true)
+        } else {
+          setIsScrolled(false)
+        }
+      }
+  
+      window.addEventListener("scroll", handleScroll)
+      return () => window.removeEventListener("scroll", handleScroll)
+    }, [])
+
     return (
-        <header className="sticky top-0 z-40 border-b bg-background">
+        <header className={`sticky top-0 z-50 w-full backdrop-blur-lg transition-all duration-300 ${isScrolled ? "bg-background/80 shadow-sm" : "bg-transparent"}`}>
             <div className="flex h-14 items-center px-4 gap-4">
             <Button variant="ghost" size="icon" className="lg:hidden" onClick={toggle}>
                 <Menu className="h-5 w-5" />

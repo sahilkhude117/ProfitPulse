@@ -97,271 +97,270 @@ import {
 import Link from "next/link"
 import { format, isToday, isYesterday, subDays } from "date-fns"
 
-// Sample transactions data
 const sampleTransactions = [
-  {
-    id: "txn-001",
-    date: "2025-04-10T14:32:00Z",
-    user: {
-      id: "usr-001",
-      name: "Alex Johnson",
-      email: "alex.j@example.com",
-      avatar: null
+    {
+      id: "txn-001",
+      date: "2025-04-10T14:32:00Z",
+      user: {
+        id: "usr-001",
+        name: "Arjun Sharma",
+        email: "arjun.s@example.com",
+        avatar: null
+      },
+      type: "payment",
+      paymentMethod: "credit_card",
+      status: "completed",
+      amount: 1299.99,
+      currency: "USD",
+      description: "Pro Plan Subscription - Annual",
+      category: "subscription",
+      reference: "INV-2025-04-10-001",
+      metadata: {
+        cardLast4: "4242",
+        cardBrand: "Visa"
+      }
     },
-    type: "payment",
-    paymentMethod: "credit_card",
-    status: "completed",
-    amount: 1299.99,
-    currency: "USD",
-    description: "Pro Plan Subscription - Annual",
-    category: "subscription",
-    reference: "INV-2025-04-10-001",
-    metadata: {
-      cardLast4: "4242",
-      cardBrand: "Visa"
-    }
-  },
-  {
-    id: "txn-002",
-    date: "2025-04-09T09:15:00Z",
-    user: {
-      id: "usr-002",
-      name: "Sarah Miller",
-      email: "sarah.miller@example.com",
-      avatar: null
+    {
+      id: "txn-002",
+      date: "2025-04-09T09:15:00Z",
+      user: {
+        id: "usr-002",
+        name: "Priya Patel",
+        email: "priya.patel@example.com",
+        avatar: null
+      },
+      type: "refund",
+      paymentMethod: "credit_card",
+      status: "completed",
+      amount: 499.99,
+      currency: "USD",
+      description: "Refund for Basic Plan - Monthly",
+      category: "refund",
+      reference: "REF-2025-04-09-001",
+      metadata: {
+        cardLast4: "1234",
+        cardBrand: "Mastercard",
+        reason: "Service not needed"
+      }
     },
-    type: "refund",
-    paymentMethod: "credit_card",
-    status: "completed",
-    amount: 499.99,
-    currency: "USD",
-    description: "Refund for Basic Plan - Monthly",
-    category: "refund",
-    reference: "REF-2025-04-09-001",
-    metadata: {
-      cardLast4: "1234",
-      cardBrand: "Mastercard",
-      reason: "Service not needed"
-    }
-  },
-  {
-    id: "txn-003",
-    date: "2025-04-08T17:45:00Z",
-    user: {
-      id: "usr-003",
-      name: "Michael Chen",
-      email: "michael.c@example.com",
-      avatar: null
+    {
+      id: "txn-003",
+      date: "2025-04-08T17:45:00Z",
+      user: {
+        id: "usr-003",
+        name: "Vikram Mehta",
+        email: "vikram.m@example.com",
+        avatar: null
+      },
+      type: "payment",
+      paymentMethod: "paypal",
+      status: "completed",
+      amount: 7999.99,
+      currency: "USD",
+      description: "Enterprise Plan - Annual",
+      category: "subscription",
+      reference: "INV-2025-04-08-001",
+      metadata: {
+        paypalEmail: "vikram.m@example.com"
+      }
     },
-    type: "payment",
-    paymentMethod: "paypal",
-    status: "completed",
-    amount: 7999.99,
-    currency: "USD",
-    description: "Enterprise Plan - Annual",
-    category: "subscription",
-    reference: "INV-2025-04-08-001",
-    metadata: {
-      paypalEmail: "michael.c@example.com"
-    }
-  },
-  {
-    id: "txn-004",
-    date: "2025-04-08T10:22:00Z",
-    user: {
-      id: "usr-004",
-      name: "Jessica Brown",
-      email: "j.brown@example.com",
-      avatar: null
+    {
+      id: "txn-004",
+      date: "2025-04-08T10:22:00Z",
+      user: {
+        id: "usr-004",
+        name: "Neha Gupta",
+        email: "n.gupta@example.com",
+        avatar: null
+      },
+      type: "payment",
+      paymentMethod: "bank_transfer",
+      status: "pending",
+      amount: 2499.99,
+      currency: "USD",
+      description: "Team Plan Subscription - Quarterly",
+      category: "subscription",
+      reference: "INV-2025-04-08-002",
+      metadata: {
+        bankName: "First National Bank"
+      }
     },
-    type: "payment",
-    paymentMethod: "bank_transfer",
-    status: "pending",
-    amount: 2499.99,
-    currency: "USD",
-    description: "Team Plan Subscription - Quarterly",
-    category: "subscription",
-    reference: "INV-2025-04-08-002",
-    metadata: {
-      bankName: "First National Bank"
-    }
-  },
-  {
-    id: "txn-005",
-    date: "2025-04-07T14:10:00Z",
-    user: {
-      id: "usr-005",
-      name: "David Smith",
-      email: "david.s@example.com",
-      avatar: null
+    {
+      id: "txn-005",
+      date: "2025-04-07T14:10:00Z",
+      user: {
+        id: "usr-005",
+        name: "Rajiv Singh",
+        email: "rajiv.s@example.com",
+        avatar: null
+      },
+      type: "payment",
+      paymentMethod: "credit_card",
+      status: "failed",
+      amount: 499.99,
+      currency: "USD",
+      description: "Basic Plan - Monthly",
+      category: "subscription",
+      reference: "INV-2025-04-07-001",
+      metadata: {
+        cardLast4: "5678",
+        cardBrand: "Visa",
+        failureReason: "Insufficient funds"
+      }
     },
-    type: "payment",
-    paymentMethod: "credit_card",
-    status: "failed",
-    amount: 499.99,
-    currency: "USD",
-    description: "Basic Plan - Monthly",
-    category: "subscription",
-    reference: "INV-2025-04-07-001",
-    metadata: {
-      cardLast4: "5678",
-      cardBrand: "Visa",
-      failureReason: "Insufficient funds"
-    }
-  },
-  {
-    id: "txn-006",
-    date: "2025-04-07T09:30:00Z",
-    user: {
-      id: "usr-006",
-      name: "Emma Wilson",
-      email: "emma.w@example.com",
-      avatar: null
+    {
+      id: "txn-006",
+      date: "2025-04-07T09:30:00Z",
+      user: {
+        id: "usr-006",
+        name: "Ananya Reddy",
+        email: "ananya.r@example.com",
+        avatar: null
+      },
+      type: "payment",
+      paymentMethod: "credit_card",
+      status: "completed",
+      amount: 199.99,
+      currency: "USD",
+      description: "Add-on: Advanced Analytics",
+      category: "add_on",
+      reference: "INV-2025-04-07-002",
+      metadata: {
+        cardLast4: "9012",
+        cardBrand: "Amex"
+      }
     },
-    type: "payment",
-    paymentMethod: "credit_card",
-    status: "completed",
-    amount: 199.99,
-    currency: "USD",
-    description: "Add-on: Advanced Analytics",
-    category: "add_on",
-    reference: "INV-2025-04-07-002",
-    metadata: {
-      cardLast4: "9012",
-      cardBrand: "Amex"
-    }
-  },
-  {
-    id: "txn-007",
-    date: "2025-04-06T16:45:00Z",
-    user: {
-      id: "usr-007",
-      name: "Robert Garcia",
-      email: "r.garcia@example.com",
-      avatar: null
+    {
+      id: "txn-007",
+      date: "2025-04-06T16:45:00Z",
+      user: {
+        id: "usr-007",
+        name: "Karan Malhotra",
+        email: "k.malhotra@example.com",
+        avatar: null
+      },
+      type: "payment",
+      paymentMethod: "paypal",
+      status: "processing",
+      amount: 1499.99,
+      currency: "USD",
+      description: "Pro Plan Subscription - Quarterly",
+      category: "subscription",
+      reference: "INV-2025-04-06-001",
+      metadata: {
+        paypalEmail: "k.malhotra@example.com"
+      }
     },
-    type: "payment",
-    paymentMethod: "paypal",
-    status: "processing",
-    amount: 1499.99,
-    currency: "USD",
-    description: "Pro Plan Subscription - Quarterly",
-    category: "subscription",
-    reference: "INV-2025-04-06-001",
-    metadata: {
-      paypalEmail: "r.garcia@example.com"
-    }
-  },
-  {
-    id: "txn-008",
-    date: "2025-04-05T13:15:00Z",
-    user: {
-      id: "usr-008",
-      name: "Olivia Martinez",
-      email: "o.martinez@example.com",
-      avatar: null
+    {
+      id: "txn-008",
+      date: "2025-04-05T13:15:00Z",
+      user: {
+        id: "usr-008",
+        name: "Divya Iyer",
+        email: "d.iyer@example.com",
+        avatar: null
+      },
+      type: "payment",
+      paymentMethod: "crypto",
+      status: "completed",
+      amount: 899.99,
+      currency: "USD",
+      description: "Premium Plan - Semi-annual",
+      category: "subscription",
+      reference: "INV-2025-04-05-001",
+      metadata: {
+        cryptoType: "BTC",
+        walletAddress: "3FZbgi29..."
+      }
     },
-    type: "payment",
-    paymentMethod: "crypto",
-    status: "completed",
-    amount: 899.99,
-    currency: "USD",
-    description: "Premium Plan - Semi-annual",
-    category: "subscription",
-    reference: "INV-2025-04-05-001",
-    metadata: {
-      cryptoType: "BTC",
-      walletAddress: "3FZbgi29..."
-    }
-  },
-  {
-    id: "txn-009",
-    date: "2025-04-04T11:22:00Z",
-    user: {
-      id: "usr-009",
-      name: "James Wilson",
-      email: "james.w@example.com",
-      avatar: null
+    {
+      id: "txn-009",
+      date: "2025-04-04T11:22:00Z",
+      user: {
+        id: "usr-009",
+        name: "Aditya Verma",
+        email: "aditya.v@example.com",
+        avatar: null
+      },
+      type: "refund",
+      paymentMethod: "credit_card",
+      status: "completed",
+      amount: 199.99,
+      currency: "USD",
+      description: "Refund for Add-on: Enhanced Support",
+      category: "refund",
+      reference: "REF-2025-04-04-001",
+      metadata: {
+        cardLast4: "6543",
+        cardBrand: "Mastercard",
+        reason: "Service not required"
+      }
     },
-    type: "refund",
-    paymentMethod: "credit_card",
-    status: "completed",
-    amount: 199.99,
-    currency: "USD",
-    description: "Refund for Add-on: Enhanced Support",
-    category: "refund",
-    reference: "REF-2025-04-04-001",
-    metadata: {
-      cardLast4: "6543",
-      cardBrand: "Mastercard",
-      reason: "Service not required"
-    }
-  },
-  {
-    id: "txn-010",
-    date: "2025-04-03T15:50:00Z",
-    user: {
-      id: "usr-010",
-      name: "Sophia Lee",
-      email: "sophia.l@example.com",
-      avatar: null
+    {
+      id: "txn-010",
+      date: "2025-04-03T15:50:00Z",
+      user: {
+        id: "usr-010",
+        name: "Meera Joshi",
+        email: "meera.j@example.com",
+        avatar: null
+      },
+      type: "payment",
+      paymentMethod: "apple_pay",
+      status: "completed",
+      amount: 499.99,
+      currency: "USD",
+      description: "Basic Plan - Monthly",
+      category: "subscription",
+      reference: "INV-2025-04-03-001",
+      metadata: {
+        deviceType: "iPhone 18 Pro"
+      }
     },
-    type: "payment",
-    paymentMethod: "apple_pay",
-    status: "completed",
-    amount: 499.99,
-    currency: "USD",
-    description: "Basic Plan - Monthly",
-    category: "subscription",
-    reference: "INV-2025-04-03-001",
-    metadata: {
-      deviceType: "iPhone 18 Pro"
-    }
-  },
-  {
-    id: "txn-011",
-    date: "2025-04-03T09:10:00Z",
-    user: {
-      id: "usr-011",
-      name: "William Taylor",
-      email: "w.taylor@example.com",
-      avatar: null
+    {
+      id: "txn-011",
+      date: "2025-04-03T09:10:00Z",
+      user: {
+        id: "usr-011",
+        name: "Rohit Choudhary",
+        email: "r.choudhary@example.com",
+        avatar: null
+      },
+      type: "payment",
+      paymentMethod: "google_pay",
+      status: "completed",
+      amount: 199.99,
+      currency: "USD",
+      description: "Add-on: Premium Support",
+      category: "add_on",
+      reference: "INV-2025-04-03-002",
+      metadata: {
+        deviceType: "Pixel 10"
+      }
     },
-    type: "payment",
-    paymentMethod: "google_pay",
-    status: "completed",
-    amount: 199.99,
-    currency: "USD",
-    description: "Add-on: Premium Support",
-    category: "add_on",
-    reference: "INV-2025-04-03-002",
-    metadata: {
-      deviceType: "Pixel 10"
+    {
+      id: "txn-012",
+      date: "2025-04-02T16:30:00Z",
+      user: {
+        id: "usr-012",
+        name: "Kavita Desai",
+        email: "k.desai@example.com",
+        avatar: null
+      },
+      type: "payment",
+      paymentMethod: "credit_card",
+      status: "disputed",
+      amount: 2499.99,
+      currency: "USD",
+      description: "Team Plan - Quarterly",
+      category: "subscription",
+      reference: "INV-2025-04-02-001",
+      metadata: {
+        cardLast4: "8765",
+        cardBrand: "Visa",
+        disputeReason: "Unauthorized charge"
+      }
     }
-  },
-  {
-    id: "txn-012",
-    date: "2025-04-02T16:30:00Z",
-    user: {
-      id: "usr-012",
-      name: "Isabella Anderson",
-      email: "i.anderson@example.com",
-      avatar: null
-    },
-    type: "payment",
-    paymentMethod: "credit_card",
-    status: "disputed",
-    amount: 2499.99,
-    currency: "USD",
-    description: "Team Plan - Quarterly",
-    category: "subscription",
-    reference: "INV-2025-04-02-001",
-    metadata: {
-      cardLast4: "8765",
-      cardBrand: "Visa",
-      disputeReason: "Unauthorized charge"
-    }
-  }
 ];
 
 // Create more sample transactions for pagination

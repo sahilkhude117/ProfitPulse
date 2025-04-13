@@ -57,7 +57,7 @@ export default function DashboardPage() {
                 <WalletIcon className="h-4 w-4 " />
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold">₹ 12,543</div>
+                <div className="text-2xl font-bold">$ 12,543</div>
                 <div className="flex flex-row mt-2">
                   <p className="text-xs  text-green-500">+18% </p>
                   <p className="ml-2 text-xs text-muted-foreground">from yesterday </p>

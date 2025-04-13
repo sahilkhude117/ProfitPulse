@@ -126,7 +126,7 @@ export default async function UserProfilePage({ params }: { params: Promise<{ id
                     <CardTitle className="text-sm font-medium">Current Balance</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="text-2xl font-bold">R {user.balance.toFixed(2)}</div>
+                    <div className="text-2xl font-bold">$ {user.balance.toFixed(2)}</div>
                     <p className="text-xs text-muted-foreground">Last updated: Today at 12:34 PM</p>
                   </CardContent>
                 </Card>

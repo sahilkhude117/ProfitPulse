@@ -168,10 +168,6 @@ export default function DashboardPage() {
 
       <div className="grid gap-4 grid-cols-1 lg:grid-cols-7">
         <Card className="lg:col-span-4">
-          <CardHeader>
-            <CardTitle>Transaction Overview</CardTitle>
-            <CardDescription>Transaction volume over time</CardDescription>
-          </CardHeader>
           <CardContent className="pl-2">
             <DashboardChart />
           </CardContent>

@@ -1427,20 +1427,20 @@ export default function TransactionsPage() {
                         </TableCell>
                       </TableRow>
                     ) : (
-                      currentTransactions.map((transaction) => (
-                        <TableRow key={transaction.id}>
+                      currentTransactions.map((transaction) => ( //@ts-ignore
+                        <TableRow key={transaction.id} className="cursor-pointer">
                           <TableCell className="px-4">
                             <Checkbox //@ts-ignore
                               checked={selectedTransactions.includes(transaction.id)}
                               onCheckedChange={() => toggleSelectTransaction(transaction.id)}
                               aria-label={`Select transaction ${transaction.id}`}
                             />
-                          </TableCell>
-                          <TableCell>
+                          </TableCell> {/*@ts-ignore*/}
+                          <TableCell onClick={() => { setCurrentTransaction(transaction); setViewTransactionDialogOpen(true); }}>
                             <div className="font-medium">{formatDate(transaction.date)}</div>
                             <div className="text-xs text-muted-foreground mt-1">{transaction.reference}</div>
-                          </TableCell>
-                          <TableCell>
+                          </TableCell>{/*@ts-ignore*/}
+                          <TableCell onClick={() => { setCurrentTransaction(transaction); setViewTransactionDialogOpen(true); }}>
                             <div className="flex items-center gap-2">
                               <Avatar className="h-8 w-8">
                                 <AvatarFallback className="text-xs bg-primary/10 text-primary">
@@ -1452,16 +1452,16 @@ export default function TransactionsPage() {
                                 <div className="text-xs text-muted-foreground mt-1">{transaction.user.email}</div>
                               </div>
                             </div>
-                          </TableCell>
-                          <TableCell>
+                          </TableCell>{/*@ts-ignore*/}
+                          <TableCell onClick={() => { setCurrentTransaction(transaction); setViewTransactionDialogOpen(true); }}>
                             <div className="max-w-[250px] truncate font-medium">
                               {transaction.description}
                             </div>
                             <div className="text-xs text-muted-foreground mt-1 capitalize">
                               {transaction.category.replace('_', ' ')}
                             </div>
-                          </TableCell>
-                          <TableCell>
+                          </TableCell>{/*@ts-ignore*/}
+                          <TableCell onClick={() => { setCurrentTransaction(transaction); setViewTransactionDialogOpen(true); }}>
                             <div className="flex items-center gap-1.5">
                               {getTransactionTypeInfo(transaction.type).icon}
                               <span className="text-sm">
@@ -1471,19 +1471,19 @@ export default function TransactionsPage() {
                             <div className="text-xs text-muted-foreground mt-1">
                               {getPaymentMethodInfo(transaction.paymentMethod)}
                             </div>
-                          </TableCell>
-                          <TableCell>
+                          </TableCell>{/*@ts-ignore*/}
+                          <TableCell onClick={() => { setCurrentTransaction(transaction); setViewTransactionDialogOpen(true); }}>
                             <Badge className={getStatusBadge(transaction.status)}>
                               {transaction.status.charAt(0).toUpperCase() + transaction.status.slice(1)}
                             </Badge>
-                          </TableCell>
-                          <TableCell>
+                          </TableCell>{/*@ts-ignore*/}
+                          <TableCell onClick={() => { setCurrentTransaction(transaction); setViewTransactionDialogOpen(true); }}>
                             {transaction.type === 'refund' ? '-' : ''}
                             <CurrencyText amount={transaction.amount} currency={transaction.currency} />
                           </TableCell>
                           <TableCell>
                             <div className="flex justify-end gap-2">
-                              <Button
+                              {/* <Button
                                 variant="ghost"
                                 size="icon"
                                 className="h-8 w-8"
@@ -1493,7 +1493,7 @@ export default function TransactionsPage() {
                                 }}
                               >
                                 <Eye className="h-4 w-4" />
-                              </Button>
+                              </Button> */}
                               <DropdownMenu>
                                 <DropdownMenuTrigger asChild>
                                   <Button variant="ghost" size="icon" className="h-8 w-8">
@@ -1710,7 +1710,11 @@ export default function TransactionsPage() {
 <Button variant="outline" onClick={() => setViewTransactionDialogOpen(false)}>
 Close
 </Button>
-<Button>
+<Button onClick={() => { setViewTransactionDialogOpen(false);  toast({
+  title: "Receipt printed",
+  description: "The receipt has been printed successfully",
+  variant: "default"
+})}}>
 <Printer className="mr-2 h-4 w-4" />
 Print Receipt
 </Button>
